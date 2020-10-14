@@ -37,8 +37,11 @@ public class Lesson2RegEx {
             textArray.add(line);
         }
 
+        //retrieve PAN IDS
         myMatcher(panPattern,"pan",panID);
+        //retrieve MAC Addresses
         myMatcher(macPattern,"mac",macAddress);
+        //retrieve MAC + RSSIs
         myMatcher(macPattern,"mac","RSSI",macPlusRSSI);
 
         System.out.println("- List of PAN IDs (Total of " + panID.size() +")");
@@ -56,7 +59,7 @@ public class Lesson2RegEx {
         }
     }
 
-    //
+    //Finds pattern matches and adds result to appropriate array list.
     public static void myMatcher(String pattern, String group, List<String> list) {
         Pattern myPattern = Pattern.compile(pattern);
         for (String s : textArray) {
@@ -66,7 +69,7 @@ public class Lesson2RegEx {
             }
         }
     }
-
+    //overloaded method to add second group name
     public static void myMatcher(String pattern, String group, String group2, List<String> list){
         Pattern myPattern = Pattern.compile(pattern);
         for (String s : textArray) {
